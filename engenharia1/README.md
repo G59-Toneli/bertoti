@@ -32,4 +32,19 @@ Unlike those more established engineering professions, current software engineer
 
 </p>
 
+# Exemplos de Tradeoff
+
+### Exemplo 1:
+<p> Ao usar a linguagem de programação python, se ganha facilidade e simplicidade na programação, em troca de poder de processamento.</p>
+
+### Exemplo 2:
+
+<p> Ao fazer uso da linguagem C, é utilizado de um poder maior de processamento, em troca de uma linguagem mais complexa, por ser mais próxima da máquina.</p>
+
+### Exemplo 3:
+
+<p> O SO Linux é gratuito, mais seguro e leve do que o Windows, porém, possui uma compatilibilidade com softwares e hardwares e uma interface menos intuitiva.</p>
+
+
+
 
