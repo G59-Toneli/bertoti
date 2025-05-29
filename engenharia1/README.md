@@ -45,6 +45,145 @@ Unlike those more established engineering professions, current software engineer
 
 <p> O SO Linux é gratuito, mais seguro e leve do que o Windows, porém, possui uma compatilibilidade com softwares e hardwares e uma interface menos intuitiva.</p>
 
+# Comentario sobre o slide 57:
+<p>
+ É apresentado o conceito de que mais vale uma grande ideia apresentada do que um pequeno produto que ainda esta sendo desenvolvido
+</p>
+
+# Codigo Java: 
+
+ ### 1. Book.java
+
+
+package library;
+
+public class Book {
+    private String title;
+    private String author;
+    private String publisher;
+    private String isbn;
+    private int year;
+    private int pages;
+
+    public Book(String title, String author, String publisher, String isbn, int year, int pages) {
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.isbn = isbn;
+        this.year = year;
+        this.pages = pages;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getPages() {
+        return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
+    }
+}
+
+### 2. Library.java
+
+package library;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class Library {
+    private List<Book> books = new LinkedList<>();
+
+    public void addBook(Book book) {
+        books.add(book);
+    }
+
+    public Book searchByIsbn(String isbn) {
+        for (Book book : books) {
+            if (book.getIsbn().equals(isbn)) return book;
+        }
+        return null;
+    }
+
+    public List<Book> searchByAuthor(String author) {
+        List<Book> result = new LinkedList<>();
+        for (Book book : books) {
+            if (book.getAuthor().equalsIgnoreCase(author)) result.add(book);
+        }
+        return result;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+}
+
+### 3. Test.java
+
+
+package library;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class TestLibrary {
+
+    @Test
+    void testLibraryOperations() {
+        Library library = new Library();
+
+        library.addBook(new Book("1984", "George Orwell", "Companhia das Letras", "978-8535914849", 1949, 328));
+        library.addBook(new Book("A Revolução dos Bichos", "George Orwell", "Companhia das Letras", "978-8535913941", 1945, 152));
+        library.addBook(new Book("Dom Casmurro", "Machado de Assis", "Editora Ática", "978-8508152710", 1899, 256));
+
+        assertEquals(3, library.getBooks().size());
+
+        Book book = library.searchByIsbn("978-8535914849");
+        assertEquals("1984", book.getTitle());
+
+        List<Book> orwellBooks = library.searchByAuthor("George Orwell");
+        assertEquals(2, orwellBooks.size());
+    }
+}
 
 
 
